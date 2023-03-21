@@ -1,0 +1,12 @@
+<%= form_with model: @book, url: books_path, method: :post do |form| %>
+  <%= form.label :name, "Nome do livro:" %>
+  <%= form.text_field :name %>
+
+  <%= form.label :author, "Nome do autor:" %>
+  <%= form.text_field :author %>
+
+  <%= form.label :page_quantity, "Quantidade de páginas:" %>
+  <%= form.number_field :page_quantity %>
+
+  <%= form.submit "Adiciona livro" %>
+<% end %>
