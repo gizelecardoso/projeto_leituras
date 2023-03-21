@@ -1,24 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Projeto Leituras
 
-Things you may want to cover:
+Objetivo: A ideia desse projeto é construir um sistema para organização de Leituras
 
-* Ruby version
+___
+### Etapa 1:
+Cadastro de Livros simples: *Nome*, *autor* e *quantidade de páginas*
+Tela básica padrão Rails com formulário contendo esses 3 campos.
 
-* System dependencies
+**Resultado inicial:**
 
-* Configuration
+  1. Página de Listagem dos Livros:
 
-* Database creation
+  ![books](readme_images/first_step/books.png)
 
-* Database initialization
+  2. Página de Criação do Livro:
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  ![new_book](readme_images/first_step/new_book.png)
