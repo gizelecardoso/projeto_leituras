@@ -34,3 +34,13 @@ Estudo das Páginas com Tailwind.
 
   [Página Login](https://play.tailwindcss.com/MMwQGl7zY5)
   ![pagina_login](readme_images/second_step/login_page.png)
+
+  3. Página de Listagem:
+
+  [Página Listagem](https://play.tailwindcss.com/D9GU9GhrLd)
+  ![pagina_listagem](readme_images/second_step/list_page.png)
+
+  3. Página do Livro:
+
+  [Página do Livro](https://play.tailwindcss.com/3WFYKMOTPq)
+  ![pagina_livro](readme_images/second_step/book_page.png)
