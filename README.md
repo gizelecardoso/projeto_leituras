@@ -44,3 +44,18 @@ Estudo das Páginas com Tailwind.
 
   [Página do Livro](https://play.tailwindcss.com/3WFYKMOTPq)
   ![pagina_livro](readme_images/second_step/book_page.png)
+
+
+___
+### Etapa 3:
+1. Configuração do Tailwind.
+
+[Adicionando Tailwind em um projeto com Rails 7](https://dev.to/dnovais/adicionando-tailwind-em-um-projeto-com-rails-7-1hjo)
+
+```ruby
+bundle add tailwindcss-rails
+
+rails tailwindcss:install
+```
+
+2. Alteração do Layout da Página de Listagem do Livro
