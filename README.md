@@ -28,23 +28,22 @@ Estudo das Páginas com Tailwind.
   1. Página Inicial:
 
   [Página Inicial](https://play.tailwindcss.com/w4ZhfAZFoP)
-  ![pagina_inicial](readme_images/second_step/first_page.png)
 
   2. Página de Login:
 
   [Página Login](https://play.tailwindcss.com/MMwQGl7zY5)
-  ![pagina_login](readme_images/second_step/login_page.png)
 
   3. Página de Listagem:
 
   [Página Listagem](https://play.tailwindcss.com/D9GU9GhrLd)
-  ![pagina_listagem](readme_images/second_step/list_page.png)
 
-  3. Página do Livro:
+  4. Página do Livro:
 
   [Página do Livro](https://play.tailwindcss.com/3WFYKMOTPq)
-  ![pagina_livro](readme_images/second_step/book_page.png)
 
+  5. Página Criação do Livro:
+
+  [Página Criação do Livro](https://play.tailwindcss.com/tKfmkQt5R9)
 
 ___
 ### Etapa 3:
@@ -59,3 +58,5 @@ rails tailwindcss:install
 ```
 
 2. Alteração do Layout da Página de Listagem do Livro
+
+3. Alteração do Layout da Página de Criação do Livro
