@@ -1,0 +1,13 @@
+pt-BR:
+  activerecord:
+    models:
+      book: Livro
+    attributes:
+      book:
+        name: Título
+        author: Autor
+        page_quantity: Páginas
+    errors:
+      messages:
+        record_invalid: 'Não foi possível salvar o livro: %{errors}'
+        blank: não pode ficar em branco

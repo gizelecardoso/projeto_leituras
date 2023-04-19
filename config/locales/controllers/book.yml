@@ -1,0 +1,5 @@
+pt-BR:
+  books:
+    create:
+      success: Livro salvo com sucesso!
+      error: Não foi possível salvar o livro
