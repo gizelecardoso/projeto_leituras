@@ -11,10 +11,10 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
 
     if @book.save!
-      flash.now[:sucess] = "Livro salvo com sucesso!"
+      flash[:sucess] = t(".success")
       redirect_to books_path
     else
-      flash.now[:error] = "Não foi possível salvar o livro"
+      flash.now[:error] = t(".error")
       new_book_path
     end
   end
