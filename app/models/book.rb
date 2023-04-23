@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# The class of validations and all things about the model Book
 class Book < ApplicationRecord
   validates :name, presence: true
   validates :author, presence: true
