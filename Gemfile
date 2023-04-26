@@ -56,6 +56,9 @@ gem 'i18n', '~> 1.12'
 # A RuboCop extension focused on enforcing Rails best practices and coding conventions.
 gem 'rubocop-rails', require: false
 
+#A framework for creating reusable, testable & encapsulated view components, built to integrate seamlessly with Ruby on Rails
+gem "view_component"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
