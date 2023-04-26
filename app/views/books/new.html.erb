@@ -1,20 +1,4 @@
-<nav class="bg-amber-900 w-screen">
-  <div class="flex flex-wrap items-center justify-between p-4">
-    <img src="https://cdn.pixabay.com/photo/2016/03/31/19/16/book-1294864_960_720.png" class="h-10 items-center" alt="Tailwind Play" />
-    <p class="text-2xl font-semibold text-white"><%= t("index.page_title") %></p>
-    <button data-collapse-toggle="navbar-default" type="button" class="ml-3 inline-flex items-center rounded-lg p-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-gray-200 md:hidden" aria-controls="navbar-default" aria-expanded="false">
-      <span class="sr-only"><%= t("index.open_menu") %></span>
-      <svg class="h-6 w-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-    </button>
-    <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-      <ul class="mt-4 flex flex-col">
-        <li>
-          <a href="#" class="block rounded text-white" aria-current="page"><%= t("index.home_page") %></a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<%= render Structures::NavBarComponent.new %>
 <div class="flex min-h-screen w-screen flex-col justify-center bg-orange-100">
   <h1 class="mb-5 flex justify-center text-2xl font-semibold text-amber-900"><%= t("new.add_book_title") %></h1>
   <div class="bg-white px-6 pb-8 pt-10 shadow-xl sm:mx-auto sm:w-1/2 sm:rounded-lg sm:px-10">
