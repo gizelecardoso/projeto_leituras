@@ -5,6 +5,37 @@
 Objetivo: A ideia desse projeto é construir um sistema para organização de Leituras
 
 ___
+
+### Arquitetura de Testes do Projeto
+A ideia é seguir nos seguintes testes:
+  1. Rotas - teste simples só para checar as rotas criadas no sistema
+
+     [Exemplo teste de rotas](https://dev.to/xandekk/testando-routes-em-rspec-rails-cbj)
+
+  2. Modelos - teste com validações e outros detalhes presentes nos modelos
+
+     [Exemplo teste de modelo](https://semaphoreci.com/community/tutorials/how-to-test-rails-models-with-rspec)
+
+  3. Sistema - teste que verifica a experiência do usuário
+
+     [Exemplo teste de sistema](https://rubyyagi.com/intro-rspec-capybara-testing/)
+
+  4. Componentes - teste renderização e especificações do componentes
+
+  [DOC Rspec](https://rspec.info/documentation/3.6/rspec-expectations/RSpec.html)
+
+
+Ideia de como Realizar os teste:
+
+* Escrever o passo a passo do teste
+* E os cenários importantes de serem cobertos
+* Conforme exemplo abaixo:
+
+![Alt text](readme_images/scenario_test.png)
+
+
+____
+
 ### Etapa 1:
 Cadastro de Livros simples: *Nome*, *autor* e *quantidade de páginas*
 Tela básica padrão Rails com formulário contendo esses 3 campos.
