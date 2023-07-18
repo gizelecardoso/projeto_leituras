@@ -60,6 +60,10 @@ gem 'rubocop-rails', require: false
 # built to integrate seamlessly with Ruby on Rails
 gem 'view_component'
 
+# A lib that promote a Ruby on Rails application test, offering a comprehension easy sintax
+# and a bigger quantity options of write and execute tests.
+gem 'rspec-rails', '~> 4.0.0'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
