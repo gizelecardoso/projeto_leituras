@@ -39,3 +39,6 @@
 
 # Simplecov
 /coverage
+
+# File of environment variables
+.env
