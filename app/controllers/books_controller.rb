@@ -3,7 +3,11 @@
 # Controlador das ações CRUD do modelo de Livros
 class BooksController < ApplicationController
   def index
-    @books = Book.all
+    @books = params[:search] ? search_books : Book.all
+  end
+
+  def search_books
+    ::GoogleBooks::Api.new.get_books(params[:search])
   end
 
   def new
