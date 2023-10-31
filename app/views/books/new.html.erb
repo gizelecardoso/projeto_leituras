@@ -1,21 +1,21 @@
 <%= render Structures::NavBarComponent.new %>
 <div class="flex min-h-screen w-screen flex-col justify-center bg-orange-100">
-  <h1 class="mb-5 flex justify-center text-2xl font-semibold text-amber-900"><%= t("new.add_book_title") %></h1>
+  <h1 class="mb-5 flex justify-center text-2xl font-semibold text-amber-900"><%= t('new.add_book_title') %></h1>
   <div class="bg-white px-6 pb-8 pt-10 shadow-xl sm:mx-auto sm:w-1/2 sm:rounded-lg sm:px-10">
     <div class="space-y-6 py-8 font-sans text-base leading-7 text-gray-700">
       <%= form_with model: @book, url: books_path, method: :post do |form| %>
         <div class="flex flex-col space-y-2">
           <%= form.label :name %>
-          <%= form.text_field :name, class: "rounded-md border"  %>
+          <%= form.text_field :name, class: 'rounded-md border' %>
 
           <%= form.label :author %>
-          <%= form.text_field :author, class: "rounded-md border" %>
+          <%= form.text_field :author, class: 'rounded-md border' %>
 
           <%= form.label :page_quantity %>
-          <%= form.number_field :page_quantity, class: "rounded-md border"  %>
+          <%= form.number_field :page_quantity, class: 'rounded-md border' %>
 
         </div>
-        <%= form.submit t("new.abb_book_button"), class:"mx-auto mt-10 flex h-10 w-1/2 items-center justify-center rounded-lg bg-amber-500 text-center font-sans font-semibold text-amber-900 shadow-lg shadow-slate-500 hover:bg-amber-600" %>
+        <%= form.submit t('new.abb_book_button'), class: 'mx-auto mt-10 flex h-10 w-1/2 items-center justify-center rounded-lg bg-amber-500 text-center font-sans font-semibold text-amber-900 shadow-lg shadow-slate-500 hover:bg-amber-600' %>
       <% end %>
     </div>
   </div>
