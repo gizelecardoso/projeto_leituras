@@ -9,7 +9,7 @@ module GoogleBooks
 
     attr_reader :api_key
 
-    def initialize(api_key: Rails.application.credentials.google_api_key)
+    def initialize(api_key: ENV.fetch('GOOGLE_API_KEY'))
       @api_key = api_key
     end
 
