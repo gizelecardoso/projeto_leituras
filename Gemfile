@@ -53,6 +53,8 @@ gem 'pg'
 # pt-4, text-center and rotate-90 that can be composed to build any design, directly in your markup.
 gem 'tailwindcss-rails', '~> 2.0'
 
+gem "httparty"
+
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   # Shim to load environment variables from .env into ENV in development.
