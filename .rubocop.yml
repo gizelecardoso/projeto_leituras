@@ -3,3 +3,4 @@ require:
 
 AllCops:
     NewCops: enable
+    SuggestExtensions: false

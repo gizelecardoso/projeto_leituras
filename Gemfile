@@ -38,9 +38,6 @@ gem 'bootsnap', require: false
 # Use internationalization in our application[https://guiarails.com.br/i18n.html]
 gem 'i18n', '~> 1.12'
 
-# A RuboCop extension focused on enforcing Rails best practices and coding conventions.
-gem 'rubocop-rails', require: false
-
 # A framework for creating reusable, testable & encapsulated view components,
 # built to integrate seamlessly with Ruby on Rails
 gem 'view_component'
@@ -52,6 +49,10 @@ gem 'rspec-rails', '~> 4.0.0'
 # Pg is the Ruby interface to the {PostgreSQL RDBMS}[http://www.postgresql.org/]
 gem 'pg'
 
+# Tailwind CSS is a utility-first CSS framework packed with classes like flex,
+# pt-4, text-center and rotate-90 that can be composed to build any design, directly in your markup.
+gem 'tailwindcss-rails', '~> 2.0'
+
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   # Shim to load environment variables from .env into ENV in development.
@@ -60,15 +61,21 @@ end
 
 group :development do
   gem 'web-console'
+  # Linters
+  gem 'brakeman'
+  gem 'erb_lint'
+  # A RuboCop extension focused on enforcing Rails best practices and coding conventions.
+  gem 'rubocop'
+  gem 'rubocop-performance'
+  gem 'rubocop-rails'
+  gem 'rubocop-rspec'
 end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
   gem 'selenium-webdriver'
-  gem 'webdrivers'
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
+  gem 'webdrivers'
 end
-
-gem 'tailwindcss-rails', '~> 2.0'
