@@ -11,7 +11,23 @@ on:
   pull_request:
     branches: [ "main" ]
 jobs:
-
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
+        with:
+          bundler-cache: true
+      # Add or replace any other lints here
+      - name: Security audit application code
+        run: bundle exec brakeman -q -w2
+      - name: Lint Ruby files
+        run: bundle exec rubocop --parallel
+      - name: Lint ERB files
+        run: bundle exec erblint --lint-all --parallel
+        
   test:
     runs-on: ubuntu-latest
     services:
@@ -44,19 +60,4 @@ jobs:
       - name: Run tests
         run: bundle exec rspec spec
 
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Install Ruby and gems
-        uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
-        with:
-          bundler-cache: true
-      # Add or replace any other lints here
-      - name: Security audit application code
-        run: bundle exec brakeman -q -w2
-      - name: Lint Ruby files
-        run: bundle exec rubocop --parallel
-      - name: Lint ERB files
-        run: bundle exec erblint --lint-all --parallel
+
