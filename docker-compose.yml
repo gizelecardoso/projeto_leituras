@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  postgresql:
+    image: postgres:12.1
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    ports:
+      - '5430:5432'
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_USERNAME=${DB_USERNAME}
+      - POSTGRES_NAME=${DB_NAME}
+  web:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    ports:
+      - '3000:3000'
+    depends_on:
+      - postgresql
+volumes:
+  pg-data:
