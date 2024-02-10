@@ -3,7 +3,9 @@
 # Controlador das ações CRUD do modelo de Livros
 class BooksController < ApplicationController
   def index
-    @books = params[:search] ? search_books : Book.all
+    @books = params[:title].blank? ? Book.search('*') : Book.search(params[:title])
+
+    # @books = params[:search] ? search_books : Book.all
   end
 
   def search_books
@@ -29,6 +31,6 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:name, :author, :page_quantity)
+    params.require(:book).permit(:name, :author, :page_quantity, :title)
   end
 end

@@ -1,0 +1,7 @@
+<%= form_with(url: books_path, method: :get, data: { turbo_frame: "books", turbo_action: "advance" }) do |f| %>
+  <div>
+    <%= f.search_field :title, placeholder: "Pesquise", value: params[:title] %>
+    <%= f.submit "Search" %>
+  </div>
+  <hr>
+<% end %>

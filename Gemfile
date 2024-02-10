@@ -55,6 +55,9 @@ gem 'tailwindcss-rails', '~> 2.0'
 
 gem 'httparty'
 
+gem 'elasticsearch', '~> 7.12'
+gem 'searchkick'
+
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   # Shim to load environment variables from .env into ENV in development.

@@ -42,3 +42,4 @@
 
 # File of environment variables
 .env
+.tool-versions
