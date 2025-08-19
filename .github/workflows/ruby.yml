@@ -37,13 +37,13 @@ jobs:
     - name: Run bundle
       run: bundle install
     - name: Build images
-      run: docker compose -f docker-compose.ci.yml build
+      run: docker compose -f docker-compose.yml build
 
     - name: Run tests
-      run: docker compose -f docker-compose.ci.yml up --abort-on-container-exit --exit-code-from app
+      run: docker compose -f docker-compose.yml up --abort-on-container-exit --exit-code-from app
 
     - name: Cleanup
-      run: docker compose -f docker-compose.ci.yml down -v
+      run: docker compose -f docker-compose.yml down -v
     
     - name: Run lint
       run: bundle exec rubocop
