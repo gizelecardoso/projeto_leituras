@@ -36,7 +36,14 @@ jobs:
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Run bundle
       run: bundle install
+    - name: Build images
+      run: docker compose -f docker-compose.ci.yml build
+
     - name: Run tests
-      run: bundle exec rspec
+      run: docker compose -f docker-compose.ci.yml up --abort-on-container-exit --exit-code-from app
+
+    - name: Cleanup
+      run: docker compose -f docker-compose.ci.yml down -v
+    
     - name: Run lint
       run: bundle exec rubocop
