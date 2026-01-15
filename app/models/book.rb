@@ -2,6 +2,8 @@
 
 # The class of validations and all things about the model Book
 class Book < ApplicationRecord
+  searchkick
+
   validates :name, presence: true
   validates :author, presence: true
   validates :page_quantity, presence: true

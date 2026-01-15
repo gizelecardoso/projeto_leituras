@@ -2,7 +2,10 @@
 <div class="flex w-screen flex-col bg-orange-100">
   <h1 class="my-5 flex justify-center text-2xl font-semibold text-amber-900"><%= t('index.list_book') %></h1>
   <div class="flex justify-end">
+    <%= render SearchComponent.new %>
     <%= link_to t('index.add_book'), new_book_path, class: 'mx-5 flex w-2/12 items-center justify-center rounded-md border bg-amber-900 py-2 text-white' %>
   </div>
-  <%= render Books::CardComponent.with_collection(@books) %>
+  <%= turbo_frame_tag "books" do %>
+    <%= render Books::CardComponent.with_collection(@books) %>
+  <% end %>
 </div>
