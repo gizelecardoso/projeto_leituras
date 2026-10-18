@@ -14,6 +14,12 @@
       <%= link_to "Edit Book",
         edit_book_path(@book),
         class: "underline hover:text-blue-400" %>
+
+      <%= link_to "Delete Book",
+        book_path(@book),
+        data: { turbo_method: :delete,
+              turbo_confirm: "Are you sure?" },
+        class: "underline hover:text-red-400" %>
     </div>
   </div>
 </div>

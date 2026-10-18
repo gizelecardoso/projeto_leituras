@@ -2,7 +2,7 @@
 
 # Controlador das ações CRUD do modelo de Livros
 class BooksController < ApplicationController
-  before_action :set_book, only: %i[edit update show]
+  before_action :set_book, only: %i[edit update show destroy]
 
   def index
     @books = params[:search] ? search_books : Book.all
@@ -41,6 +41,16 @@ class BooksController < ApplicationController
     else
       flash.now[:error] = t('.error')
       edit_book_path
+    end
+  end
+
+  def destroy
+    if @book.destroy
+      flash[:sucess] = t('.success')
+      redirect_to books_path
+    else
+      flash.now[:error] = t('.error')
+      redirect_to books_path
     end
   end
 
