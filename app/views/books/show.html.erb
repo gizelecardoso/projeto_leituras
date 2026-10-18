@@ -1,8 +1,19 @@
 <%= render Structures::NavBarComponent.new %>
-<div class="flex w-screen flex-col bg-orange-100">
-  <h1 class="my-5 flex justify-center text-2xl font-semibold text-amber-900"><%= t('index.list_book') %></h1>
-  <div class="flex justify-end">
-    <%= link_to t('index.add_book'), new_book_path, class: 'mx-5 flex w-2/12 items-center justify-center rounded-md border bg-amber-900 py-2 text-white' %>
+<div class="flex min-h-screen w-screen flex-col justify-center bg-orange-100">
+  <h1 class="mb-5 flex justify-center text-2xl font-semibold text-amber-900"><%= t('new.add_book_title') %></h1>
+  <div class="bg-white px-6 pb-8 pt-10 shadow-xl sm:mx-auto sm:w-1/2 sm:rounded-lg sm:px-10">
+    <div class="space-y-6 py-8 font-sans text-base leading-7 text-gray-700">
+      <h1><%= @book.name %></h1>
+
+      <p>Author: <%= @book.author %></p>
+
+      <%= link_to "Back",
+        books_path,
+        class: "underline hover:text-blue-400" %>
+     
+      <%= link_to "Edit Book",
+        edit_book_path(@book),
+        class: "underline hover:text-blue-400" %>
+    </div>
   </div>
-  <%= render Books::CardComponent.new(book: @books) %>
 </div>

@@ -13,6 +13,6 @@
       <label class="px-2 font-semibold"><%= t('activerecord.attributes.book.page_quantity') %>:</label>
       <%= book.page_quantity %>
     </div>
-    <a class="underline hover:cursor-pointer hover:text-blue-400"><%= t('view') %></a>
+    <%= link_to t('view'), book_path(book), class:"underline hover:cursor-pointer hover:text-blue-400"%>
   </div>
 </div>
