@@ -11,8 +11,9 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container">
+  <body class="min-h-screen bg-[#F8F9F4]">
+    <%= render Structures::NavBarComponent.new %>
+    <main>
       <%= yield %>
     </main>
   </body>

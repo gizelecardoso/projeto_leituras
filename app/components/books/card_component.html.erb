@@ -1,18 +1,32 @@
-<div class="m-5 rounded-lg bg-white p-5 shadow-xl">
-  <div class="flex flex-col items-center justify-between lg:flex-row">
-    <img src="https://m.media-amazon.com/images/I/71+YcLO29uL.jpg" class="h-20 items-center" alt="Tailwind Play">
-    <div class="flex flex-row">
-      <label class="px-2 font-semibold"><%= t('activerecord.attributes.book.name') %>:</label>
-      <%= book.name %>
-    </div>
-    <div class="flex flex-row">
-      <label class="px-2 font-semibold"><%= t('activerecord.attributes.book.author') %>:</label>
-      <%= book.author %>
-    </div>
-    <div class="flex flex-row">
-      <label class="px-2 font-semibold"><%= t('activerecord.attributes.book.page_quantity') %>:</label>
-      <%= book.page_quantity %>
-    </div>
-    <%= link_to t('view'), book_path(book), class:"underline hover:cursor-pointer hover:text-blue-400"%>
+<article class="flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-sm transition-shadow hover:shadow-lg">
+
+  <div class="flex h-52 items-center justify-center bg-[#EAF2E8] p-4">    
+    <img
+      src="https://m.media-amazon.com/images/I/71+YcLO29uL.jpg"
+      alt="Capa de <%= book.name %>"
+      class="h-full max-w-full object-contain"
+    >
   </div>
-</div>
+
+  <div class="flex flex-1 flex-col p-5">
+
+    <h2 class="mb-2 text-lg font-semibold text-gray-900">
+      <%= book.name %>
+    </h2>
+
+    <p class="mb-3 text-sm text-gray-600">
+      <%= book.author %>
+    </p>
+
+    <p class="mb-5 text-sm text-gray-500">
+      <%= t('activerecord.attributes.book.page_quantity') %>:
+      <%= book.page_quantity %>
+    </p>
+
+    <%= link_to t('view'),
+        book_path(book),
+        class: "mt-auto block rounded-lg border border-[#285943] px-4 py-2 text-center text-sm font-medium text-[#285943] transition-colors hover:bg-[#285943] hover:text-white" %>
+
+  </div>
+
+</article>
