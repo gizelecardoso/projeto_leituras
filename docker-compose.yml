@@ -25,5 +25,12 @@ services:
       - '3000:3000'
     depends_on:
       - postgresql
+
+  tailwind:
+    build: .
+    volumes:
+      - .:/projeto_leituras
+    command: bin/rails tailwindcss:watch
+
 volumes:
   pg-data:
