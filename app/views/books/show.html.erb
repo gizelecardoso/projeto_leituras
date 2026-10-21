@@ -1,24 +1,49 @@
-<div class="flex min-h-screen w-screen flex-col justify-center bg-orange-100">
-  <h1 class="mb-5 flex justify-center text-2xl font-semibold text-amber-900"><%= t('new.add_book_title') %></h1>
-  <div class="bg-white px-6 pb-8 pt-10 shadow-xl sm:mx-auto sm:w-1/2 sm:rounded-lg sm:px-10">
-    <div class="space-y-6 py-8 font-sans text-base leading-7 text-gray-700">
-      <h1><%= @book.name %></h1>
+<main class="mx-auto max-w-5xl px-6 py-10">
+  <div class="grid grid-cols-1 gap-8 md:grid-cols-3 rounded-xl bg-white p-8 shadow-sm">
 
-      <p>Author: <%= @book.author %></p>
+    <div class="flex items-center justify-center rounded-lg bg-[#EAF2E8] p-6">
+      <img
+        src="https://m.media-amazon.com/images/I/71+YcLO29uL.jpg"
+        alt="Capa de <%= @book.name %>"
+        class="h-64 w-auto max-w-full object-contain"
+      >
+    </div>
 
-      <%= link_to "Back",
-        books_path,
-        class: "underline hover:text-blue-400" %>
-     
-      <%= link_to "Edit Book",
-        edit_book_path(@book),
-        class: "underline hover:text-blue-400" %>
+    <div class="flex flex-col md:col-span-2">
 
-      <%= link_to "Delete Book",
-        book_path(@book),
-        data: { turbo_method: :delete,
+      <h1 class="mb-2 text-3xl font-semibold text-[#285943]">
+        <%= @book.name %>
+      </h1>
+
+      <p class="mb-6 text-lg text-gray-600">
+        <%= @book.author %>
+      </p>
+
+      <div class="mb-8 border-t border-gray-200 pt-6">
+        <p class="text-sm text-gray-500">
+          <%= t('activerecord.attributes.book.page_quantity') %>
+        </p>
+
+        <p class="font-medium text-gray-900">
+          <%= @book.page_quantity %>
+        </p>
+      </div>
+
+      <div class="mt-auto flex flex-wrap gap-3">
+        <%= link_to "Editar Livro",
+            edit_book_path(@book),
+            class: "rounded-lg bg-[#285943] px-6 py-3 text-white hover:bg-[#4F8064]" %>
+
+        <%= link_to "Deletar Livro",
+            book_path(@book),
+              data: { turbo_method: :delete,
               turbo_confirm: "Are you sure?" },
-        class: "underline hover:text-red-400" %>
+            class: "rounded-lg bg-[#285943] px-6 py-3 text-white hover:bg-[#4F8064]" %>
+
+        <%= link_to "Voltar",
+            books_path,
+            class: "rounded-lg border border-[#285943] px-6 py-3 text-[#285943] hover:bg-[#EAF2E8]" %>
+      </div>
     </div>
   </div>
-</div>
+</main>

@@ -1,0 +1,32 @@
+
+<%= form_with model: book, class: "space-y-6" do |form| %>
+
+  <div>
+    <%= form.label :name,
+        class: "mb-2 block text-sm font-medium text-gray-700" %>
+
+    <%= form.text_field :name,
+        class: "w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-[#285943] focus:outline-none" %>
+  </div>
+
+  <div>
+    <%= form.label :author,
+        class: "mb-2 block text-sm font-medium text-gray-700" %>
+
+    <%= form.text_field :author,
+        class: "w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-[#285943] focus:outline-none" %>
+  </div>
+
+  <div>
+    <%= form.label :page_quantity,
+        class: "mb-2 block text-sm font-medium text-gray-700" %>
+
+    <%= form.number_field :page_quantity,
+        min: 1,
+        class: "w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-[#285943] focus:outline-none" %>
+  </div>
+
+  <%= form.submit "Salvar Alterações",
+      class: "w-full cursor-pointer rounded-lg bg-[#285943] px-6 py-3 font-medium text-white hover:bg-[#4F8064]" %>
+
+<% end %>
