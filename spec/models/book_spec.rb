@@ -3,11 +3,29 @@
 require 'rails_helper'
 
 RSpec.describe Book do
-  describe 'model validations' do
-    it { is_expected.to validate_presence_of(:name) }
-    it { is_expected.to validate_presence_of(:author) }
-    it { is_expected.to validate_presence_of(:page_quantity) }
+  describe 'validations' do
+    subject(:book) { build(:book) }
 
-    it { is_expected.to validate_numericality_of(:page_quantity).only_integer.is_greater_than(0) }
+    it 'it is valid with valid attributes' do
+      expect(book).to be_valid
+    end
+
+    describe 'name' do
+      it { is_expected.to validate_presence_of(:name) }
+    end
+
+    describe 'author' do
+      it { is_expected.to validate_presence_of(:author) }
+    end
+
+    describe 'page_quantity' do
+      it { is_expected.to validate_presence_of(:page_quantity) }
+
+      it do
+        is_expected.to validate_numericality_of(:page_quantity)
+          .only_integer
+          .is_greater_than(0)
+      end
+    end
   end
 end
