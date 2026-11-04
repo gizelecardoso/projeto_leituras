@@ -22,12 +22,11 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
 
-    if @book.save!
-      flash[:sucess] = t('.success')
-      redirect_to books_path
+    if @book.save
+      redirect_to books_path, notice: t('.success')
     else
-      flash.now[:error] = t('.error')
-      new_book_path
+      flash.now[:alarm] = t('.error')
+      render :new, status: :unprocessable_entity
     end
   end
 
