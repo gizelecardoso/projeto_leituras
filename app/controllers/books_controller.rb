@@ -23,7 +23,7 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
 
     if @book.save
-      redirect_to books_path, notice: t('.success')
+      redirect_to book_path(@book), notice: t('.success')
     else
       flash.now[:alarm] = t('.error')
       render :new, status: :unprocessable_entity
@@ -35,11 +35,10 @@ class BooksController < ApplicationController
 
   def update
     if @book.update(book_params)
-      flash[:sucess] = t('.success')
-      redirect_to books_path
+      redirect_to book_path(@book), notice: t('.success')
     else
-      flash.now[:error] = t('.error')
-      edit_book_path
+      flash.now[:alarm] = t('.error')
+      render :edit, status: :unprocessable_entity
     end
   end
 
