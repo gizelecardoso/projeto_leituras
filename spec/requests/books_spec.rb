@@ -40,7 +40,7 @@ RSpec.describe 'Books', type: :request do
       it 'redirects to the created book' do
         post books_path, params: valid_params
 
-        expect(response).to redirect_to(books_path)
+        expect(response).to redirect_to(book_path(Book.last))
       end
     end
 
@@ -66,11 +66,56 @@ RSpec.describe 'Books', type: :request do
 	end
 
   describe 'GET /books/:id/edit' do
-    # EDIT
+    it 'returns a successful response' do
+      book = create(:book)
+      get edit_book_path(book)
+
+      expect(response).to have_http_status(:ok)
+    end
   end
 
   describe 'PATCH /books/:id' do
-    # UPDATE
+    context 'with valid parameters' do
+      let(:book) { create(:book) }
+      let(:valid_params) do
+        {
+          book: { name: 'Updated Book Name'}
+        }
+      end
+
+      it 'updates the book' do
+        patch book_path(book), params: valid_params
+
+        expect(book.reload.name).to eq('Updated Book Name')
+      end
+
+      it 'redirects to the book' do
+        patch book_path(book), params: valid_params
+
+        expect(response).to redirect_to(book_path(book))
+      end
+    end
+
+    context 'with invalid parameters' do
+      let(:book) { create(:book) }
+      let(:invalid_params) do
+        {
+          book: { name: '' }
+        }
+      end
+
+      it 'does not update the old book' do
+        patch book_path(book), params: invalid_params
+
+        expect(book.name).not_to eq('')
+      end
+
+      it 'returns an unprocessable entity status' do
+        patch book_path(book), params: invalid_params
+
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
+    end
   end
 
   describe 'DELETE /books/:id' do
