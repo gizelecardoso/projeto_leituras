@@ -119,6 +119,26 @@ RSpec.describe 'Books', type: :request do
   end
 
   describe 'DELETE /books/:id' do
-    # DESTROY
+    context 'when the book exists' do
+      let!(:book) { create(:book) }
+
+      it 'deletes the book' do
+        expect { delete book_path(book) }.to change(Book, :count).by(-1)
+      end
+
+      it 'redirects to the books index' do
+        delete book_path(book)
+
+        expect(response).to redirect_to(books_path)
+      end
+    end
+
+    context 'when the book does not exist' do
+      it 'raises a record not found error' do
+        expect {
+          delete book_path(id: 999999)
+        }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
   end
 end
