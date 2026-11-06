@@ -2,11 +2,46 @@ require 'rails_helper'
 
 RSpec.describe 'Books', type: :request do
   describe 'GET /books' do
-    # INDEX
+    let!(:books) { create_list(:book, 3) }
+
+    it 'returns a successful response' do
+      get books_path
+
+      expect(response).to have_http_status(:ok)
+    end
+
+    it 'displays the books' do
+      get books_path
+
+      books.each do |book|
+        expect(response.body).to include(book.name)
+      end
+    end
   end
 
   describe 'GET /books/:id' do
-    # SHOW
+    let(:book) { create(:book) }
+
+    it 'returns a successful response' do
+      get book_path(book)
+
+      expect(response).to have_http_status(:ok)
+    end
+
+    it 'displays the book details' do
+      get book_path(book)
+
+      expect(response.body).to include(book.name)
+      expect(response.body).to include(book.author)
+    end
+
+    context 'when the book does not exist' do
+      it 'raises a record not found error' do
+        expect {
+          get book_path(id: 999999)
+        }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
   end
 
   describe 'GET /books/new' do
