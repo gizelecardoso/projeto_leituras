@@ -44,11 +44,7 @@ class BooksController < ApplicationController
 
   def destroy
     if @book.destroy
-      flash[:sucess] = t('.success')
-      redirect_to books_path
-    else
-      flash.now[:error] = t('.error')
-      redirect_to books_path
+      redirect_to books_path, notice: t('.success')
     end
   end
 
