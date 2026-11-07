@@ -176,4 +176,41 @@ RSpec.describe 'Books', type: :request do
       end
     end
   end
+
+  describe 'GET /books with search' do
+    let(:search_term) { 'Harry Potter' }
+
+    let(:external_books) do
+      [
+        build(
+          :book, 
+          name: 'Harry Potter and the Philosopher Stone', 
+          author: 'J.K. Rowling', 
+          page_quantity: 309
+        )
+      ]
+    end
+
+    let(:google_books_api) do
+      instance_double(GoogleBooks::Api)
+    end
+
+    before do
+      allow(GoogleBooks::Api)
+        .to receive(:new)
+        .and_return(google_books_api)
+
+      allow(google_books_api)
+        .to receive(:get_books)
+        .with(search_term)
+        .and_return(external_books)
+    end
+
+    it 'displays books returned by the Google Books API' do
+      get books_path, params: { search: search_term }
+
+      expect(response).to have_http_status(:ok)
+      expect(response.body).to include(external_books.first.name)
+    end
+  end    
 end
