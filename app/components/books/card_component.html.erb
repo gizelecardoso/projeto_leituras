@@ -23,10 +23,10 @@
       <%= book.page_quantity %>
     </p>
 
-    <%= link_to t('view'),
-        book_path(book),
-        class: "mt-auto block rounded-lg border border-[#285943] px-4 py-2 text-center text-sm font-medium text-[#285943] transition-colors hover:bg-[#285943] hover:text-white" %>
-
+    <% if book.persisted? %>
+      <%= link_to t('view'),
+          book_path(book),
+          class: "mt-auto block rounded-lg border border-[#285943] px-4 py-2 text-center text-sm font-medium text-[#285943] transition-colors hover:bg-[#285943] hover:text-white" %>
+    <% end %>
   </div>
-
 </article>
