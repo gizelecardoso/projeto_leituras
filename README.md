@@ -1,93 +1,128 @@
-# README
+# 📚 Leitura — Reading Tracker
 
-### Projeto Leituras
+Leitura is a web application built with Ruby on Rails to help users organize and track their reading journey.
 
-Objetivo: A ideia desse projeto é construir um sistema para organização de Leituras
+The project provides a simple way to manage a personal book collection and is being developed incrementally, with a focus on maintainable code, automated testing, and modern backend development practices.
 
-___
+## 🛠️ Tech Stack
 
-### Arquitetura de Testes do Projeto
-A ideia é seguir nos seguintes testes:
-  1. Rotas - teste simples só para checar as rotas criadas no sistema
+**Backend**
+- Ruby on Rails
+- Ruby
+- PostgreSQL
 
-     [Exemplo teste de rotas](https://dev.to/xandekk/testando-routes-em-rspec-rails-cbj)
+**Frontend**
+- Hotwire / Turbo
+- Tailwind CSS
 
-  2. Modelos - teste com validações e outros detalhes presentes nos modelos
+**Development & Testing**
+- Docker & Docker Compose
+- RSpec
+- FactoryBot & Faker
+- Shoulda Matchers
+- SimpleCov
 
-     [Exemplo teste de modelo](https://semaphoreci.com/community/tutorials/how-to-test-rails-models-with-rspec)
+## ✨ Features
 
-  3. Sistema - teste que verifica a experiência do usuário
+The first MVP focuses on book management.
 
-     [Exemplo teste de sistema](https://rubyyagi.com/intro-rspec-capybara-testing/)
+- Create new book records.
+- View a list of registered books.
+- View individual book details.
+- Update existing book information.
+- Delete books from the collection.
+- Validate required book attributes.
 
-  4. Componentes - teste renderização e especificações do componentes
+Each book includes basic information such as its title, author, and number of pages.
 
-  [DOC Rspec](https://rspec.info/documentation/3.6/rspec-expectations/RSpec.html)
+## 🚀 Getting Started
 
+### Pre-requisites
 
-Ideia de como Realizar os teste:
+Make sure the following tools are installed:
 
-* Escrever o passo a passo do teste
-* E os cenários importantes de serem cobertos
-* Conforme exemplo abaixo:
+- Docker
+- Docker Compose
+- Git
 
-![Alt text](readme_images/scenario_test.png)
+### Installation
 
+**1. Clone the repository**
 
-____
-
-### Etapa 1:
-Cadastro de Livros simples: *Nome*, *autor* e *quantidade de páginas*
-Tela básica padrão Rails com formulário contendo esses 3 campos.
-
-**Resultado inicial:**
-
-  1. Página de Listagem dos Livros:
-
-  ![books](readme_images/first_step/books.png)
-
-  2. Página de Criação do Livro:
-
-  ![new_book](readme_images/first_step/new_book.png)
-
-___
-### Etapa 2:
-Estudo das Páginas com Tailwind.
-
-**Resultado inicial:**
-
-  1. Página Inicial:
-
-  [Página Inicial](https://play.tailwindcss.com/w4ZhfAZFoP)
-
-  2. Página de Login:
-
-  [Página Login](https://play.tailwindcss.com/MMwQGl7zY5)
-
-  3. Página de Listagem:
-
-  [Página Listagem](https://play.tailwindcss.com/D9GU9GhrLd)
-
-  4. Página do Livro:
-
-  [Página do Livro](https://play.tailwindcss.com/3WFYKMOTPq)
-
-  5. Página Criação do Livro:
-
-  [Página Criação do Livro](https://play.tailwindcss.com/tKfmkQt5R9)
-
-___
-### Etapa 3:
-1. Configuração do Tailwind.
-
-[Adicionando Tailwind em um projeto com Rails 7](https://dev.to/dnovais/adicionando-tailwind-em-um-projeto-com-rails-7-1hjo)
-
-```ruby
-bundle add tailwindcss-rails
-
-rails tailwindcss:install
+```bash
+git clone git@github.com:gizelecardoso/projeto_leituras.git
+cd leitura
 ```
 
-2. Alteração do Layout da Página de Listagem do Livro
+**2. Build and start the application**
 
-3. Alteração do Layout da Página de Criação do Livro
+```bash
+docker compose up --build
+```
+
+**3. Prepare the database**
+
+```bash
+docker compose exec web bin/rails db:prepare
+```
+
+**4. Access the application**
+
+Open your browser and navigate to:
+
+http://localhost:3000
+
+> Note: Commands assume the Rails service is named `web` in Docker Compose. Adjust the service name and port according to the project configuration.
+
+## 🧪 Testing
+
+Leitura uses RSpec for automated testing.
+
+The test suite includes model specifications and request specifications to verify application behavior.
+
+### Running tests
+
+```bash
+docker compose exec web bundle exec rspec
+```
+
+### Test coverage
+
+SimpleCov is used to monitor code coverage and identify areas that may require additional tests.
+
+After running the test suite, the coverage report can be found at:
+
+```text
+coverage/index.html
+```
+
+## ⚙️ Technical Decisions
+
+### Containerized development
+
+Docker and Docker Compose are used to provide a consistent development environment and manage the application and PostgreSQL services.
+
+### Automated testing
+
+RSpec is used to verify application behavior, supported by FactoryBot for test data creation and Faker for generating realistic sample values.
+
+### Database
+
+PostgreSQL is used as the relational database, with Active Record handling data persistence and validations.
+
+## 🗺️ Roadmap
+
+Planned improvements include:
+
+- [ ] Complete the first MVP and its automated tests.
+- [ ] Implement continuous integration with GitHub Actions.
+- [ ] Expand reading-tracking functionality.
+- [ ] Add user authentication.
+- [ ] Document the application architecture.
+- [ ] Deploy the application to AWS.
+
+## 📄 Project Status
+
+**In active development — First MVP**
+
+The application is currently being developed and improved incrementally.
