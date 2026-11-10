@@ -16,3 +16,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Build Rails Docker image
+        run: docker compose build web
