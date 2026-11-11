@@ -26,13 +26,8 @@ jobs:
       - name: Build Rails Docker image
         run: docker compose build --no-cache web
       
-      - name: Check database configuration
-        run: |
-          docker compose run --rm --no-deps web sh -c '
-            echo "DATABASE_USER=$DATABASE_USER"
-            echo "DATABASE_HOST=$DATABASE_HOST"
-            echo "DATABASE_NAME=$DATABASE_NAME"
-          '
+      - name: Build Tailwind CSS
+        run: docker compose run --rm -e RAILS_ENV=test web bundle exec rails tailwindcss:build
 
       - name: Prepare test database
         run: docker compose run --rm -e RAILS_ENV=test web bundle exec rails db:prepare
