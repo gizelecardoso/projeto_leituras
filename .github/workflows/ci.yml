@@ -12,6 +12,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    environment: Projeto_leitura
 
     env:
       DATABASE_USER: ${{ vars.DATABASE_USER }}
