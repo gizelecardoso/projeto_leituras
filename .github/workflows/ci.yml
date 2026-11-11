@@ -13,9 +13,20 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    env:
+      DATABASE_USER: ${{ vars.DATABASE_USER }}
+      DATABASE_NAME: ${{ vars.DATABASE_NAME }}
+      DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Build Rails Docker image
         run: docker compose build --no-cache web
+
+      - name: Prepare test database
+        run: docker compose run --rm -e RAILS_ENV=test web bundle exec rails db:prepare
+
+      - name: Run RSpec tests
+        run: docker compose run --rm -e RAILS_ENV=test web bundle exec rspec
