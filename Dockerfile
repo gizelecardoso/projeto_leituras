@@ -1,7 +1,12 @@
-FROM ruby:3.1.2
+FROM ruby:3.4-bookworm
 
 WORKDIR /projeto_leituras
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+RUN rm -rf /var/lib/apt/lists/* \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends \
+       nodejs \
+       postgresql-client \
+    && rm -rf /var/lib/apt/lists/*
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
 COPY . .
