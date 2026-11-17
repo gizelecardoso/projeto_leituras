@@ -37,9 +37,10 @@ RSpec.describe 'Books', type: :request do
 
     context 'when the book does not exist' do
       it 'raises a record not found error' do
-        expect {
-          get book_path(id: 999999)
-        }.to raise_error(ActiveRecord::RecordNotFound)
+        # Rails 7.1: Rescuable exceptions are converted into HTTP responses
+        get book_path(id: 999999)
+
+        expect(response).to have_http_status(:not_found)
       end
     end
   end
@@ -95,7 +96,8 @@ RSpec.describe 'Books', type: :request do
       it 'returns an unprocessable entity status' do
         post books_path, params: invalid_params
 
-        expect(response).to have_http_status(:unprocessable_entity)
+        # Rails 7.1: unprocessable entity responses is changed to unprecessable_content
+        expect(response).to have_http_status(:unprocessable_content)
       end
     end
 	end
@@ -148,7 +150,8 @@ RSpec.describe 'Books', type: :request do
       it 'returns an unprocessable entity status' do
         patch book_path(book), params: invalid_params
 
-        expect(response).to have_http_status(:unprocessable_entity)
+        # Rails 7.1: unprocessable entity responses is changed to unprecessable_content
+        expect(response).to have_http_status(:unprocessable_content)
       end
     end
   end
@@ -170,9 +173,10 @@ RSpec.describe 'Books', type: :request do
 
     context 'when the book does not exist' do
       it 'raises a record not found error' do
-        expect {
-          delete book_path(id: 999999)
-        }.to raise_error(ActiveRecord::RecordNotFound)
+        # Rails 7.1: Rescuable exceptions are converted into HTTP responses
+        delete book_path(id: 999999)
+
+        expect(response).to have_http_status(:not_found)
       end
     end
   end

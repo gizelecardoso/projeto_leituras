@@ -26,7 +26,7 @@ class BooksController < ApplicationController
       redirect_to book_path(@book), notice: t('.success')
     else
       flash.now[:alarm] = t('.error')
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_content
     end
   end
 
@@ -38,7 +38,7 @@ class BooksController < ApplicationController
       redirect_to book_path(@book), notice: t('.success')
     else
       flash.now[:alarm] = t('.error')
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_content
     end
   end
 
