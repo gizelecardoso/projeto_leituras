@@ -62,4 +62,7 @@ Rails.application.configure do
 
   # Rails 7.1: Raises an error when callbacks reference controller actions that do not exist.
   config.action_controller.raise_on_missing_callback_actions = true
+
+  # Eager load the application in CI to detect loading issues.
+  config.eager_load = ENV["CI"].present?
 end

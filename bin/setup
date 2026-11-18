@@ -3,6 +3,7 @@ require "fileutils"
 
 # path to your application root.
 APP_ROOT = File.expand_path("..", __dir__)
+APP_NAME = "projeto-leituras"
 
 # Rails 7.1: Uses Ruby's built-in exception handling when a setup command fails.
 def system!(*args)
