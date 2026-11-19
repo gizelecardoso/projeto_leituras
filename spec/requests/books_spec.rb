@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Books', type: :request do
   describe 'GET /books' do
+
     let!(:books) { create_list(:book, 3) }
 
     it 'returns a successful response' do
@@ -13,8 +14,10 @@ RSpec.describe 'Books', type: :request do
     it 'displays the books' do
       get books_path
 
+      html = Nokogiri::HTML(response.body)
+
       books.each do |book|
-        expect(response.body).to include(book.name)
+        expect(html.text).to include(book.name)
       end
     end
   end
