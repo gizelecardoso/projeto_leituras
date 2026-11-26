@@ -15,3 +15,15 @@ variable "environment" {
   type        = string
   default     = "production"
 }
+
+variable "instance_type" {
+  description = "EC2 instance type"
+  type        = string
+  default     = "t3.micro"
+}
+
+variable "root_volume_size" {
+  description = "EC2 root volume size in GB"
+  type        = number
+  default     = 20
+}
