@@ -1,0 +1,33 @@
+# Git
+.git
+.github
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+!.env.production.example
+config/master.key
+config/credentials/*.key
+
+# Terraform infrastructure
+terraform/
+
+# Temporary files and logs
+log/*
+tmp/*
+storage/*
+coverage/
+
+# Local dependencies
+.bundle
+vendor/bundle
+node_modules/
+
+# Compiled assets
+public/assets/
+app/assets/builds/*
+
+# Editor configuration
+.vscode/
+.idea/

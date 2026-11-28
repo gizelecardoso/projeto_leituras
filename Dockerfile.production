@@ -1,0 +1,30 @@
+FROM ruby:3.4-bookworm
+
+WORKDIR /projeto_leituras
+
+# Configure the production environment
+ENV RAILS_ENV=production \
+    BUNDLE_DEPLOYMENT=1 \
+    BUNDLE_WITHOUT="development:test"
+
+# Install system dependencies
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+       postgresql-client \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install production gems
+COPY Gemfile Gemfile.lock ./
+RUN bundle install
+
+# Copy application source code
+COPY . .
+
+# Precompile production assets
+RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile
+
+EXPOSE 3000
+
+ENTRYPOINT ["/projeto_leituras/entrypoint.sh"]
+
+CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
