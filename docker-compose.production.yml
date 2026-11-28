@@ -1,0 +1,65 @@
+services:
+  postgresql:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DATABASE_USER:?required}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:?required}
+      POSTGRES_DB: ${DATABASE_NAME:?required}
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U \"$${POSTGRES_USER}\" -d \"$${POSTGRES_DB}\""]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  web:
+    image: ${APP_IMAGE:-leitura:production}
+    restart: unless-stopped
+    command: >
+      sh -c "bundle exec rails db:prepare &&
+             exec bundle exec rails server -b 0.0.0.0"
+    environment:
+      RAILS_ENV: production
+      RAILS_MAX_THREADS: 3
+      RAILS_SERVE_STATIC_FILES: "true"
+      RAILS_FORCE_SSL: ${RAILS_FORCE_SSL:-false}
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE:?required}
+      DATABASE_HOST: postgresql
+      DATABASE_USER: ${DATABASE_USER:?required}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD:?required}
+      DATABASE_NAME: ${DATABASE_NAME:?required}
+      DATABASE_PORT: 5432
+    expose:
+      - "3000"
+    healthcheck:
+      test: ["CMD", "ruby", "-rnet/http", "-e", "exit(Net::HTTP.get_response(URI('http://localhost:3000/up')).is_a?(Net::HTTPSuccess) ? 0 : 1)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+    depends_on:
+      postgresql:
+        condition: service_healthy
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    environment:
+      APP_DOMAIN: ${APP_DOMAIN:-http://localhost}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    depends_on:
+      web:
+        condition: service_healthy
+
+volumes:
+  pg-data:
+  caddy-data:
+  caddy-config:

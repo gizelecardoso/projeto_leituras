@@ -39,10 +39,6 @@ gem 'i18n', '~> 1.12'
 # built to integrate seamlessly with Ruby on Rails
 gem 'view_component'
 
-# A lib that promote a Ruby on Rails application test, offering a comprehension easy sintax
-# and a bigger quantity options of write and execute tests.
-gem 'rspec-rails', '~> 7.1'
-
 # Pg is the Ruby interface to the {PostgreSQL RDBMS}[http://www.postgresql.org/]
 gem 'pg'
 
@@ -60,6 +56,9 @@ gem 'mutex_m'
 gem 'drb'
 
 group :development, :test do
+  # A lib that promote a Ruby on Rails application test, offering a comprehension easy sintax
+  # and a bigger quantity options of write and execute tests.
+  gem 'rspec-rails', '~> 7.1'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   # Shim to load environment variables from .env into ENV in development.
   gem 'dotenv-rails', '~> 2.1', '>= 2.1.1'

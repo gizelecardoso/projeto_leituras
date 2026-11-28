@@ -42,6 +42,9 @@
 
 # File of environment variables
 .env
+.env.*
+!.env.template
+!.env.production.template
 
 # Terraform
 **/.terraform/
