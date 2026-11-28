@@ -13,7 +13,8 @@ resource "aws_instance" "app" {
 
   iam_instance_profile = aws_iam_instance_profile.ec2_instance_profile.name
 
-  user_data = aws_iam_instance_profile.ec2_instance_profile.name
+  user_data                   = file("${path.module}/user_data.sh")
+  user_data_replace_on_change = true
 
   credit_specification {
     cpu_credits = "standard"

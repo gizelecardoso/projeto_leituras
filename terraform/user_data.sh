@@ -3,7 +3,7 @@
 set -euo pipefail
 
 # Install Docker and required utilities
-dnf install -y docker curl
+dnf install -y docker
 
 # Enable and start Docker
 systemctl enable --now docker
